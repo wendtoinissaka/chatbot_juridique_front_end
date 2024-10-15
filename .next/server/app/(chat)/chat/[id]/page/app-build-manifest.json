@@ -1,0 +1,41 @@
+{
+  "pages": {
+    "/(chat)/chat/[id]/page": [
+      "static/chunks/_d014a4._.css",
+      "static/chunks/_a93251._.js",
+      "static/chunks/c9fd2_next_55faec._.js",
+      "static/chunks/29b32_tailwind-merge_dist_bundle-mjs_mjs_947f7b._.js",
+      "static/chunks/3d0e0_@radix-ui_react-menu_dist_index_mjs_76d5d8._.js",
+      "static/chunks/52f43_@radix-ui_react-icons_dist_react-icons_esm_028f1c.js",
+      "static/chunks/d852c_framer-motion_dist_es_render_91ac64._.js",
+      "static/chunks/d852c_framer-motion_dist_es_animation_cf6421._.js",
+      "static/chunks/d852c_framer-motion_dist_es_projection_2bae96._.js",
+      "static/chunks/d852c_framer-motion_dist_es_gestures_5d287d._.js",
+      "static/chunks/d852c_framer-motion_dist_es_b877b9._.js",
+      "static/chunks/node_modules__pnpm_b07eb1._.js",
+      "static/chunks/app_layout_tsx_7daa0f._.js",
+      "static/chunks/app_(chat)_layout_tsx_90a9aa._.js",
+      "static/chunks/app_(chat)_layout_tsx_afd270._.js",
+      "static/chunks/_ceafcf._.js",
+      "static/chunks/6e532_react-syntax-highlighter_dist_30b7cb._.js",
+      "static/chunks/node_modules__pnpm_f9e053._.js",
+      "static/chunks/6db0f_refractor_lang_d93fc0._.js",
+      "static/chunks/6db0f_refractor_597452._.js",
+      "static/chunks/f5950_micromark_dev_lib_fc124b._.js",
+      "static/chunks/4c273_micromark-core-commonmark_dev_lib_76580a._.js",
+      "static/chunks/node_modules__pnpm_b6ad73._.js",
+      "static/chunks/components_stocks_0d32d2._.js",
+      "static/chunks/app_(chat)_chat_[id]_page_tsx_a4acc9._.js",
+      "static/chunks/c9fd2_next_dist_compiled_react_d69927._.js",
+      "static/chunks/c9fd2_next_dist_compiled_react-dom_cjs_react-dom_development_cf7d3f.js",
+      "static/chunks/c9fd2_next_dist_compiled_react-dom_e6fda0._.js",
+      "static/chunks/c9fd2_next_dist_compiled_e7cdfd._.js",
+      "static/chunks/c9fd2_next_dist_client_880f06._.js",
+      "static/chunks/c9fd2_next_dist_87de34._.js",
+      "static/chunks/90481_@swc_helpers_cjs_e55b81._.js",
+      "static/chunks/[turbopack]_dev_client_hmr-client_ts_f53808._.js",
+      "static/chunks/c9fd2_next_dist_esm_build_templates_app-page_c3fcfa.js",
+      "static/chunks/c9fd2_next_dist_esm_build_templates_app-page_c0a0fd.js"
+    ]
+  }
+}
