@@ -1,5 +1,6 @@
-<a href="https://chat.vercel.ai/">
-<img alt="Accueil" src="./img/image.png">
+<img alt="Accueil" src="./img/image1.png">
+<img alt="Accueil" src="./img/image2.png">
+<img alt="Accueil" src="./img/image3.png">
 
 <h1 align="center">VEENGE MAAN CHATBOT</h1>
 </a>

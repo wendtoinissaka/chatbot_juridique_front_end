@@ -1,10 +1,14 @@
 {
   "app": {
-    "[project]/app/(chat)/chat/[id]/page": [
+    "[project]/app/(chat)/page": [
       "static/media/Geist_Variable-s.p.781b491f.woff2",
       "static/media/GeistMono_Variable.p.0ce97b8a.woff2"
     ],
-    "[project]/app/(chat)/page": [
+    "[project]/app/laws/page": [
+      "static/media/Geist_Variable-s.p.781b491f.woff2",
+      "static/media/GeistMono_Variable.p.0ce97b8a.woff2"
+    ],
+    "[project]/app/notification/signup/page": [
       "static/media/Geist_Variable-s.p.781b491f.woff2",
       "static/media/GeistMono_Variable.p.0ce97b8a.woff2"
     ]
