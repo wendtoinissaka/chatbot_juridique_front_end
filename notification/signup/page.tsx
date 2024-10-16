@@ -1,7 +1,5 @@
 "use client";
-import { signupNotification } from '@/app/notification/route';
 import { useState, useEffect } from 'react';
-// import { signupNotification } from '../route';
 
 const NotificationSignup = () => {
   const [email, setEmail] = useState('');
@@ -22,12 +20,22 @@ const NotificationSignup = () => {
     formData.append('email', email);
     formData.append('numero', numero);
 
-    const result = await signupNotification(formData);
+    try {
+      // Make a POST request to the Next.js API route
+      const response = await fetch('/api/notification', {
+        method: 'POST',
+        body: formData,
+      });
 
-    if (result.status) {
-      setMessage('Inscription réussie !');
-    } else {
-      setMessage(result.errorMessage || 'Erreur lors de l\'inscription.');
+      const result = await response.json();
+
+      if (response.ok) {
+        setMessage('Inscription réussie !');
+      } else {
+        setMessage(result.errorMessage || 'Erreur lors de l\'inscription.');
+      }
+    } catch (error) {
+      setMessage('Erreur de connexion. Veuillez réessayer.');
     }
   };
 
