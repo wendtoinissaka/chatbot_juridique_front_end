@@ -1,6 +1,7 @@
 "use client";
+import { signupNotification } from '@/app/notification/route';
 import { useState, useEffect } from 'react';
-import { signupNotification } from '../route';
+// import { signupNotification } from '../route';
 
 const NotificationSignup = () => {
   const [email, setEmail] = useState('');
