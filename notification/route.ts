@@ -1,61 +1,136 @@
-'use server'
+'use server';
 
-import axios from 'axios'
-import { z } from 'zod'
+import axios from 'axios';
+import { z } from 'zod';
 
 // Interface pour le résultat de l'inscription
 interface SignupResult {
-  status?: string
-  errorMessage?: string
+  status?: string;
+  errorMessage?: string;
 }
 
 // Schéma pour valider les données du formulaire
 const signupSchema = z.object({
   email: z.string().email().optional(),   // L'email est optionnel mais doit être valide s'il est fourni
   numero: z.string().min(8).optional(),   // Le numéro est aussi optionnel, mais doit avoir un minimum de 8 caractères
-})
+});
 
 // Fonction pour appeler l'API Flask et inscrire un utilisateur
-export async function signupNotification(formData: FormData): Promise<SignupResult> {
+async function signupNotification(formData: FormData): Promise<SignupResult> {
   try {
-    const email = formData.get('email')?.toString()
-    const numero = formData.get('numero')?.toString()
+    const email = formData.get('email')?.toString();
+    const numero = formData.get('numero')?.toString();
 
     // Valider les données reçues
-    const parsedData = signupSchema.safeParse({ email, numero })
+    const parsedData = signupSchema.safeParse({ email, numero });
 
     if (!parsedData.success) {
       return {
         errorMessage: "Les informations saisies sont invalides.",
-      }
+      };
     }
 
     // Vérifier que l'un des deux champs est rempli
     if (!email && !numero) {
       return {
         errorMessage: "Au moins un des champs (email ou numéro) est requis.",
-      }
+      };
     }
 
     // URL de l'API
-    const apiUrl = `${process.env.API_BASE_URL}/notification_signup`
+    const apiUrl = `${process.env.API_BASE_URL}/notification_signup`;
 
     // Appel à l'API (requête POST)
     const response = await axios.post(apiUrl, {
       email: parsedData.data.email,
       numero: parsedData.data.numero,
-    })
+    });
 
     return {
       status: response.data.status,
-    }
+    };
   } catch (error) {
-    console.error('Erreur lors de l\'inscription :', error)
+    console.error('Erreur lors de l\'inscription :', error);
     return {
       errorMessage: "Erreur de connexion. Veuillez réessayer.",
-    }
+    };
   }
 }
+
+// Implémentation de la route POST pour Next.js
+export async function POST(request: Request) {
+  const formData = await request.formData();
+  const result = await signupNotification(formData);
+
+  if (result.errorMessage) {
+    return new Response(result.errorMessage, { status: 400 });
+  }
+
+  return new Response(JSON.stringify({ status: result.status }), {
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+
+
+// 'use server'
+
+// import axios from 'axios'
+// import { z } from 'zod'
+
+// // Interface pour le résultat de l'inscription
+// interface SignupResult {
+//   status?: string
+//   errorMessage?: string
+// }
+
+// // Schéma pour valider les données du formulaire
+// const signupSchema = z.object({
+//   email: z.string().email().optional(),   // L'email est optionnel mais doit être valide s'il est fourni
+//   numero: z.string().min(8).optional(),   // Le numéro est aussi optionnel, mais doit avoir un minimum de 8 caractères
+// })
+
+// // Fonction pour appeler l'API Flask et inscrire un utilisateur
+// export async function signupNotification(formData: FormData): Promise<SignupResult> {
+//   try {
+//     const email = formData.get('email')?.toString()
+//     const numero = formData.get('numero')?.toString()
+
+//     // Valider les données reçues
+//     const parsedData = signupSchema.safeParse({ email, numero })
+
+//     if (!parsedData.success) {
+//       return {
+//         errorMessage: "Les informations saisies sont invalides.",
+//       }
+//     }
+
+//     // Vérifier que l'un des deux champs est rempli
+//     if (!email && !numero) {
+//       return {
+//         errorMessage: "Au moins un des champs (email ou numéro) est requis.",
+//       }
+//     }
+
+//     // URL de l'API
+//     const apiUrl = `${process.env.API_BASE_URL}/notification_signup`
+
+//     // Appel à l'API (requête POST)
+//     const response = await axios.post(apiUrl, {
+//       email: parsedData.data.email,
+//       numero: parsedData.data.numero,
+//     })
+
+//     return {
+//       status: response.data.status,
+//     }
+//   } catch (error) {
+//     console.error('Erreur lors de l\'inscription :', error)
+//     return {
+//       errorMessage: "Erreur de connexion. Veuillez réessayer.",
+//     }
+//   }
+// }
 
 
 
